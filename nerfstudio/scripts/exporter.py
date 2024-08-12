@@ -16,7 +16,6 @@
 Script for exporting NeRF into other formats.
 """
 
-
 from __future__ import annotations
 
 import json
@@ -32,6 +31,9 @@ import numpy as np
 import open3d as o3d
 import torch
 import tyro
+
+# from nerfstudio.models.splatfacto import SplatfactoModel
+from server_end.nsros.ros_splatfacto import SplatfactoModel # use our real time splacfacto model
 from typing_extensions import Annotated, Literal
 
 from nerfstudio.cameras.rays import RayBundle
@@ -44,7 +46,6 @@ from nerfstudio.exporter import texture_utils, tsdf_utils
 from nerfstudio.exporter.exporter_utils import collect_camera_poses, generate_point_cloud, get_mesh_from_filename
 from nerfstudio.exporter.marching_cubes import generate_mesh_with_multires_marching_cubes
 from nerfstudio.fields.sdf_field import SDFField  # noqa
-from nerfstudio.models.splatfacto import SplatfactoModel
 from nerfstudio.pipelines.base_pipeline import Pipeline, VanillaPipeline
 from nerfstudio.utils.eval_utils import eval_setup
 from nerfstudio.utils.rich_utils import CONSOLE
