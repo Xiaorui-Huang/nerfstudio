@@ -454,7 +454,7 @@ class Viewer:
             R = R @ vtf.SO3.from_x_radians(np.pi)
             camera_handle = self.viser_server.add_camera_frustum(
                 name=f"/cameras/camera_{idx:05d}",
-                fov=float(2 * np.arctan(camera.cx / camera.fx[0])),
+                fov=float(2 * np.arctan((camera.cx / camera.fx[0]).cpu())),
                 scale=self.config.camera_frustum_scale,
                 aspect=float(camera.cx[0] / camera.cy[0]),
                 image=image_uint8,
